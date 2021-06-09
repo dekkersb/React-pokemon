@@ -6,13 +6,8 @@ import PokemonCard from "./PokemonCard";
 function App() {
     return (
         <div>
-            <PokemonCard nameOfPokemon="drowzee"/>
-            <PokemonCard nameOfPokemon="pikachu"/>
-            <PokemonCard nameOfPokemon="diglett"/>
-            <PokemonCard nameOfPokemon="raichu"/>
-            <PokemonCard nameOfPokemon="geodude"/>
-            <PokemonCard nameOfPokemon="mew"/>
-            <PokemonCard nameOfPokemon="squirtle"/>
+            <PokemonCard nameOfPokemon="jigglypuff"/>
+
         </div>
     )
 };

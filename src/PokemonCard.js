@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
+import "./PokemonCard.css";
 
 
 function PokemonCard (props) {
@@ -25,11 +26,25 @@ function PokemonCard (props) {
 
 
     return (
-        <div>
+        <div className="PokemonCard">
             {pokemons ? (
-                <div>
+                <div className="PokemonDetails">
                     <h1>{pokemons.name}</h1>
                     <img src={pokemons.sprites.other.dream_world.front_default}/>
+                    <br/>
+                    <div>
+                        Moves: {pokemons.moves.length}
+                    </div>
+                    <br/>
+                    <div>
+                        Weight: {pokemons.weight}
+                    </div>
+                    <br/>
+                    <div>
+                        Abilities: {pokemons.abilities.map((ability)=>{
+return  <ul>{ability.ability.name}</ul>
+                        })}
+                    </div>
                 </div>
             ) : (
                 <h3> Loading... </h3>
