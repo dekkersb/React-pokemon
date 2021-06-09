@@ -1,29 +1,51 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
-import Buttons from "./Buttons";
 import PokemonCard from "./PokemonCard";
 
 function PokemonList () {
-    const [pokemonList, setPokemonList] = useState();
-console.log("Dit is de list before fetching:", pokemonList)
+    const [pokemonList, setPokemonList] = useState([]);
+    const [offSet, setOffset] = useState(0);
+
+function offSetAdd () {
+    setOffset(offSet + 20);
+}
+function offSetMin () {
+    setOffset(offSet - 20);
+}
 
     useEffect(()=>{
         async function fetchPokemonList () {
             try {
                 const response = await axios.get(
-                    `https://pokeapi.co/api/v2/pokemon?offset=0&limit=20`
+
+                    `https://pokeapi.co/api/v2/pokemon?offset=${offSet}&limit=20`
                 )
-                console.log("dit is de pokemon list:", response.data.results)
                 setPokemonList(response.data.results);
             } catch {
                 console.log("DIT WERKT NIET ERROR!!!")
             }
         }
-        fetchPokemonList();
+            fetchPokemonList();
 
-    }, []);
+    }, [offSet]);
 
 return (
+    <div>
+        <button
+            type="button"
+            disabled={offSet <=19}
+            onClick={offSetMin}
+        >
+            Vorige
+        </button>
+
+        <button
+            type="button"
+            disabled={offSet >=1100}
+            onClick={offSetAdd}
+        >
+            Volgende
+        </button>
     <div>
         {pokemonList ? (
             <div>
@@ -35,6 +57,22 @@ return (
         <h3>Loading...</h3>
         )
         }
+    </div>
+        <button
+            type="button"
+            disabled={offSet <=19}
+            onClick={offSetMin}
+        >
+            Vorige
+        </button>
+
+        <button
+            type="button"
+            disabled={offSet >=1100}
+            onClick={offSetAdd}
+        >
+            Volgende
+        </button>
     </div>
 )
 }

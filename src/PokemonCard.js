@@ -5,7 +5,6 @@ import "./PokemonCard.css";
 
 function PokemonCard (props) {
     const [pokemons, setPokemons] = useState(null);
-    console.log("wat is de pokemon?", pokemons)
 
 
     useEffect(()=>{
@@ -14,15 +13,14 @@ function PokemonCard (props) {
                 const response = await axios.get(
                     `https://pokeapi.co/api/v2/pokemon/${props.nameOfPokemon}`
                 )
-                console.log("dit is de pokemon naam:", response.data)
                 setPokemons(response.data)
             } catch {
                 console.log("DIT WERKT NIET ERROR!!!")
             }
         }
-        fetchPokemon();
+            fetchPokemon();
 
-    }, []);
+    }, [pokemons]);
 
 
     return (
