@@ -1,12 +1,13 @@
-import React from 'react';
 import './App.css';
+import PokemonList from "./PokemonList";
 
 function App() {
-  return (
-    <div>
-      Begin hier met de opdracht!
-    </div>
-  );
-}
+    return (
+        <div>
+            <PokemonList/>
+        </div>
+    )
+};
+
 
 export default App;
